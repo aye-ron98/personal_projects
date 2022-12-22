@@ -107,6 +107,18 @@ def get_number_of_occupants():
         return occupants
 
 
+def get_destination():
+    """
+    Prompt user for destination to search for
+
+    :return: user input as a string
+    """
+
+    destination = input('Where would you like to go?: ')
+
+    return destination
+
+
 def check_date_format(user_date):
     """
     Checks format of user input to ensure it is in DD-month-YYYY format. If not informs user to correct it.
