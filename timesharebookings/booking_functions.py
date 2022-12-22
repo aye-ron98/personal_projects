@@ -7,20 +7,22 @@ functions related to Seleunium web automations
 from selenium.webdriver.common.by import By
 
 
-def login(se_driver):
+def login(se_driver, loginname, keyword):
     """
     login to embarc website
 
     :param se_driver: a webdriver for selenium framework to use
+    :param loginname: valid username in string format
+    :param keyword: valid password in string format
     :precondition se_driver: webdriver must be accessible by computer
     :postcondition: will login to the embarc website
     """
 
     username = se_driver.find_element(By.XPATH, '//*[@id="Username"]')
-    username.send_keys('erwinzhang')
+    username.send_keys(loginname)
 
     password = se_driver.find_element(By.XPATH, '//*[@id="Password"]')
-    password.send_keys('Safety2021')
+    password.send_keys(keyword)
 
     logon = se_driver.find_element(By.XPATH, '//*[@id="page-mobile"]/div[3]/div[2]/div/form/div[3]/div[4]/input')
     logon.click()
