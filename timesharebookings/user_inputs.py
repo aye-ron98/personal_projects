@@ -2,7 +2,6 @@
 functions related to getting user inputs for program to execute
 """
 from datetime import datetime
-from datetime import date
 
 
 def get_user_name():
@@ -34,7 +33,8 @@ def get_arrival_date():
     Takes user input and returns it as a string.
 
     Will check user input for date entery for DD-month-YYYY format. Informs user to try again if false.
-    Will check user input for date entery to ensure date is equal or grater than current date. Informs user to try again if false.
+    Will check user input for date entery to ensure date is equal or grater than current date.
+    Informs user to try again if false.
 
     :return: user input as a string
     """
@@ -57,7 +57,8 @@ def get_departure_date(arrival):
     Takes user input and returns it as a string.
 
     Will check user input for date entery for DD-month-YYYY format. Informs user to try again if false.
-    Will check user input for date entery to ensure date is equal or grater than current date. Informs user to try again if false.
+    Will check user input for date entery to ensure date is equal or grater than current date.
+    Informs user to try again if false.
 
     :param arrival: the arrival date
     :precondition: must be a sting in DD-month-YYYY format
@@ -162,7 +163,7 @@ def check_number_format(user_number):
 
 
 def main():
-    print(get_number_of_occupants())
+    main()
 
 
 if __name__ == '__main__':
