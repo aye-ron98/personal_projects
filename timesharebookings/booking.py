@@ -29,8 +29,8 @@ def main(url):
     login = driver.find_element(By.XPATH, '//*[@id="page-mobile"]/div[3]/div[2]/div/form/div[3]/div[4]/input')
     login.click()
 
-    clickable = driver.find_element(By.XPATH, '//*[@id="dashboard-content"]/div[2]/div/div[2]/a')
-    clickable.click()
+    navigate_to_bookings = driver.find_element(By.XPATH, '//*[@id="dashboard-content"]/div[2]/div/div[2]/a')
+    navigate_to_bookings.click()
 
     try:
         WebDriverWait(driver, 5).until(expected_conditions.presence_of_element_located(
@@ -45,31 +45,24 @@ def main(url):
 
     arrival_date = driver.find_element(By.XPATH, '//*[@id="Booking_CheckInFromDate"]')
     arrival_date.clear()
-    arrival_date.send_keys('01-Apr-2023')
+    arrival_date.send_keys('22-Dec-2022')
 
     departure_date = driver.find_element(By.XPATH, '//*[@id="Booking_CheckInToDate"]')
     departure_date.clear()
-    departure_date.send_keys('30-Apr-2023')
+    departure_date.send_keys('31-Dec-2022')
 
     driver.execute_script("document.querySelector('#Booking_NightCount').setAttribute('value', '1')")
     driver.execute_script("document.querySelector('#Booking_Occupancy').setAttribute('value', '3')")
 
-    time.sleep(5)
+    time.sleep(0.5)
 
-    # search = driver.find_element(By.ID, 'submit')
-    driver.execute_script("document.querySelector('#submit').click()")
+    driver.find_element(By.XPATH, '//*[@id="submit"]').submit()
 
-    time.sleep(5)
+    avalability = driver.find_elements(By.CLASS_NAME, 'td-Checkin-Checkout')
 
-    try:
-        avaliability = driver.find_element(By.CSS_SELECTOR, 'table.GridResultsTable')
-    except:
-        print('sorry there are no bookings avaliable')
-    else:
-        for row in avaliability.find_element(By.CSS_SELECTOR, 'tr'):
-            for cell in row.find_element(By.CSS_SELECTOR, 'td'):
-                if cell.getAttribute('class') == 'td-Checkin-Checkout':
-                    print(cell.text())
+    for checkin, checkout in zip(*[iter(avalability)] * 2):
+        print('checking:', checkin.text, '|', 'checkout:', checkout.text)
+
 
 
 if __name__ == '__main__':
