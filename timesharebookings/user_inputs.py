@@ -115,7 +115,7 @@ def get_destination():
     :return: user input as a string
     """
 
-    destination = input('Where would you like to go?: ')
+    destination = input('Where would you like to go? (eg Embarc® Whistler): ')
 
     return destination
 
