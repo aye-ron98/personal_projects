@@ -3,13 +3,23 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions
 import booking_functions as bookings
+import user_inputs
 
 
 def main(url):
     driver = webdriver.Chrome()
     driver.get(url)
 
-    bookings.login(driver)
+    user_name = user_inputs.get_user_name()
+    password = user_inputs.get_password()
+
+    destination = user_inputs.get_destination()
+    arrival = user_inputs.get_arrival_date()
+    departure = user_inputs.get_departure_date(arrival)
+    nights = user_inputs.get_number_of_nights()
+    occupants = user_inputs.get_number_of_occupants()
+
+    bookings.login(driver, user_name, password)
     bookings.page_navigation(driver)
 
     try:
@@ -20,7 +30,7 @@ def main(url):
     else:
         driver.find_element(By.XPATH, '/html/body/div[11]/div[1]/button').click()
 
-    bookings.check_for_bookings(driver, 'Embarc® Whistler', '01-May-2023', '08-May-2023', '2', '3')
+    bookings.check_for_bookings(driver, destination, arrival, departure, nights, occupants)
     print(bookings.print_avaliability(driver))
 
 
