@@ -92,11 +92,12 @@ def check_avalability(se_driver):
     """
 
     try:
-        se_driver.find_element(By.XPATH, '//*[@id="AvailResults"]/div')
+        WebDriverWait(se_driver, 5).until(expected_conditions.presence_of_element_located(
+            (By.CSS_SELECTOR, 'table#GridResultsTable')))
     except:
-        return True
-    else:
         return False
+    else:
+        return True
 
 
 def check_for_popup(se_driver):
@@ -111,7 +112,7 @@ def check_for_popup(se_driver):
         WebDriverWait(se_driver, 5).until(expected_conditions.presence_of_element_located(
             (By.XPATH, '/html/body/div[11]/div[1]/button')))
     except:
-        pass
+        return
     else:
         se_driver.find_element(By.XPATH, '/html/body/div[11]/div[1]/button').click()
 
