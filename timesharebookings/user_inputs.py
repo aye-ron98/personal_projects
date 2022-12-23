@@ -1,7 +1,7 @@
 """
 functions related to getting user inputs for program to execute
 """
-from datetime import datetime
+from datetime import datetime, timedelta
 
 
 def get_user_name():
@@ -47,9 +47,9 @@ def get_arrival_date():
     if formatted_arrival_date is None:
         return
     if datetime.now() <= formatted_arrival_date:
-        return arrival_date, True
+        return arrival_date
     else:
-        print('Your arrival date cannot be in the past'), False
+        print('Your arrival date cannot be in the past')
 
 
 def get_departure_date(arrival):
@@ -77,9 +77,9 @@ def get_departure_date(arrival):
     if formatted_departure_date is None:
         return
     if formatted_arrival_date < formatted_departure_date:
-        return departure_date, True
+        return departure_date
     else:
-        print('Your arrival date cannot be in the past'), False
+        print('Your arrival date cannot be in the past')
 
 
 def get_number_of_nights():
@@ -118,6 +118,23 @@ def get_destination():
     destination = input('Where would you like to go? (eg Embarc® Whistler): ')
 
     return destination
+
+
+def get_time_to_check():
+    """
+    prompts user for duration to check for rooms
+
+    :return: user input as a date time object
+    """
+
+    check_duration = input('how long would you like to check\n'
+                           'format in hours eg 1 hour = 1: ')
+    duration = check_number_format(check_duration)
+
+    if duration is not None:
+        time_change = timedelta(hours=int(duration))
+        new_time = datetime.now() + time_change
+        return new_time
 
 
 def check_date_format(user_date):
