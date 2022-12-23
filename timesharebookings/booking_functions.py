@@ -5,6 +5,8 @@ functions related to Seleunium web automations
 - page navigation
 """
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions
 
 
 def login(se_driver, loginname, keyword):
@@ -77,6 +79,41 @@ def check_for_bookings(se_driver, location, arrival, departure, nights, occupanc
     se_driver.implicitly_wait(5)
 
     se_driver.find_element(By.XPATH, '//*[@id="submit"]').submit()
+
+
+def check_avalability(se_driver):
+    """
+    Evalutes page to see if there is available rooms or not. If rooms are available will return True, else False.
+
+    :param se_driver: valid selenium driver
+    :precondition se_driver: webdriver must be accessible by computer
+    :postcondition: if there is room availability return True else False
+    :return: boolean True or False
+    """
+
+    try:
+        se_driver.find_element(By.XPATH, '//*[@id="AvailResults"]/div')
+    except:
+        return True
+    else:
+        return False
+
+
+def check_for_popup(se_driver):
+    """
+    Checks browser for popups, closes popups if popups are present
+
+    :param se_driver: valid selenium driver
+    :precondition se_driver: webdriver must be accessible by computer
+    :postcondition: will close popups if they are present
+    """
+    try:
+        WebDriverWait(se_driver, 5).until(expected_conditions.presence_of_element_located(
+            (By.XPATH, '/html/body/div[11]/div[1]/button')))
+    except:
+        pass
+    else:
+        se_driver.find_element(By.XPATH, '/html/body/div[11]/div[1]/button').click()
 
 
 def print_avaliability(se_driver):
