@@ -23,7 +23,7 @@ def get_password():
     :return: user input as a string
     """
 
-    password = input('Enter your embar account password: ')
+    password = input('Enter your embarc account password: ')
 
     return password
 
@@ -154,7 +154,6 @@ def check_date_format(user_date):
         date_object = datetime.strptime('-'.join(split_user_date), "%Y-%b-%d")
     except ValueError:
         print('You must enter in a DD-month-YYYY format.')
-        return
     else:
         return date_object
 
