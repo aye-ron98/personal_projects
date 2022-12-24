@@ -1,6 +1,7 @@
 from selenium import webdriver
 import booking_functions as bookings
 import user_inputs
+import notification
 import time
 from datetime import datetime
 
@@ -28,7 +29,7 @@ def main(url):
         bookings.check_for_bookings(driver, destination, arrival, departure, nights, occupants)
 
         if bookings.check_avalability(driver):
-            print(bookings.print_avaliability(driver))
+            notification.send_notification(bookings.print_avaliability(driver))
             break
         else:
             time.sleep(300)
