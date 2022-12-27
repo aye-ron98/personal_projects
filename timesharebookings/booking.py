@@ -4,6 +4,7 @@ import user_inputs
 import notification
 import time
 from datetime import datetime
+import json
 
 
 def main(url):
@@ -29,7 +30,8 @@ def main(url):
         bookings.check_for_bookings(driver, destination, arrival, departure, nights, occupants)
 
         if bookings.check_avalability(driver):
-            notification.send_notification(bookings.print_avaliability(driver))
+            avaliabilities = json.dumps(bookings.print_avaliability(driver))
+            notification.send_notification(avaliabilities)
             break
         else:
             time.sleep(300)
