@@ -9,7 +9,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions
 
 
-def login(se_driver, user_name, keyword):
+def login(se_driver, loginname, keyword):
     """
     login to embarc website
 
@@ -21,7 +21,7 @@ def login(se_driver, user_name, keyword):
     """
 
     username = se_driver.find_element(By.XPATH, '//*[@id="Username"]')
-    username.send_keys(user_name)
+    username.send_keys(loginname)
 
     password = se_driver.find_element(By.XPATH, '//*[@id="Password"]')
     password.send_keys(keyword)
