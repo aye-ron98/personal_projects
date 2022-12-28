@@ -6,7 +6,7 @@ import os
 from dotenv import load_dotenv
 
 
-def send_notification(message):
+def send_notification(message: str) -> None:
     load_dotenv()
 
     header = {'authorization': 'NzYyNTMzMTI1OTAwMzM3MTUy.GEHhyj.EbFpEic1UNqGSwvXjxuKgW4--COTpZOw0PzR6g'}

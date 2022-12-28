@@ -9,7 +9,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions
 
 
-def login(se_driver, loginname, keyword):
+def login(se_driver, loginname: str, keyword: str) -> None:
     """
     login to embarc website
 
@@ -30,7 +30,7 @@ def login(se_driver, loginname, keyword):
     logon.click()
 
 
-def page_navigation(se_driver):
+def page_navigation(se_driver) -> None:
     """
     Navigate webpage
 
@@ -43,7 +43,7 @@ def page_navigation(se_driver):
     navigate_to_bookings.click()
 
 
-def check_for_bookings(se_driver, location, arrival, departure, nights, occupancy):
+def check_for_bookings(se_driver, location: str, arrival: str, departure: str, nights: str, occupancy: str) -> None:
     """
     Check hotel site for available bookings, returns list of available bookings if
     found else notifies user none are available.
@@ -81,7 +81,7 @@ def check_for_bookings(se_driver, location, arrival, departure, nights, occupanc
     se_driver.find_element(By.XPATH, '//*[@id="submit"]').submit()
 
 
-def check_avalability(se_driver):
+def check_avalability(se_driver) -> bool:
     """
     Evalutes page to see if there is available rooms or not. If rooms are available will return True, else False.
 
@@ -100,7 +100,7 @@ def check_avalability(se_driver):
         return True
 
 
-def check_for_popup(se_driver):
+def check_for_popup(se_driver) -> None:
     """
     Checks browser for popups, closes popups if popups are present
 
@@ -117,7 +117,7 @@ def check_for_popup(se_driver):
         se_driver.find_element(By.XPATH, '/html/body/div[11]/div[1]/button').click()
 
 
-def print_avaliability(se_driver):
+def print_avaliability(se_driver) -> list:
     """
     Check for room availability, if there is a match return a list of all available bookings
 

@@ -4,7 +4,7 @@ functions related to getting user inputs for program to execute
 from datetime import datetime, timedelta
 
 
-def get_user_name():
+def get_user_name() -> str:
     """
     Takes user input and returns it as a string. Function does not store any user information.
 
@@ -16,7 +16,7 @@ def get_user_name():
     return user_name
 
 
-def get_password():
+def get_password() -> str:
     """
     Takes user input and returns it as a string. Function does not store any user information.
 
@@ -28,7 +28,7 @@ def get_password():
     return password
 
 
-def get_arrival_date():
+def get_arrival_date() -> None | str:
     """
     Takes user input and returns it as a string.
 
@@ -36,7 +36,9 @@ def get_arrival_date():
     Will check user input for date entery to ensure date is equal or grater than current date.
     Informs user to try again if false.
 
-    :return: user input as a string
+    :postcondition: return None if user enters incorrect format
+    :postcondition: return userinput as sring if user input is in correct format
+    :return: user input as a string or None
     """
 
     arrival_date = input('Enter your arrival date in DD-month-YYYY format\n'
@@ -52,7 +54,7 @@ def get_arrival_date():
         print('Your arrival date cannot be in the past')
 
 
-def get_departure_date(arrival):
+def get_departure_date(arrival) -> None | str:
     """
     Takes user input and returns it as a string.
 
@@ -65,7 +67,7 @@ def get_departure_date(arrival):
     :postcondition: returns the departure date and True if preconditons are met
     :postconditoin: returns False and a message to user that departure cannot be before arrival
     if preconditions are not met
-    :return: user input as a string and a Boolean
+    :return: user input as a string or None
     """
 
     departure_date = input('Enter your departure date in DD-month-YYYY format\n'
@@ -82,7 +84,7 @@ def get_departure_date(arrival):
         print('Your arrival date cannot be in the past')
 
 
-def get_number_of_nights():
+def get_number_of_nights() -> str | None:
     """
     Takes user input and returns input as a string
 
@@ -95,7 +97,7 @@ def get_number_of_nights():
         return nights
 
 
-def get_number_of_occupants():
+def get_number_of_occupants() -> str | None:
     """
     Takes user input and returns input as a string
 
@@ -108,7 +110,7 @@ def get_number_of_occupants():
         return occupants
 
 
-def get_destination():
+def get_destination() -> str:
     """
     Prompt user for destination to search for
 
@@ -120,7 +122,7 @@ def get_destination():
     return destination
 
 
-def get_time_to_check():
+def get_time_to_check() -> datetime:
     """
     prompts user for duration to check for rooms
 
@@ -137,7 +139,7 @@ def get_time_to_check():
         return new_time
 
 
-def check_date_format(user_date):
+def check_date_format(user_date: str) -> datetime:
     """
     Checks format of user input to ensure it is in DD-month-YYYY format. If not informs user to correct it.
     
@@ -158,7 +160,7 @@ def check_date_format(user_date):
         return date_object
 
 
-def check_number_format(user_number):
+def check_number_format(user_number: str) -> str | None:
     """
     Checks format of user input to ensure it is an integer.
 
