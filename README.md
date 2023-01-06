@@ -29,22 +29,30 @@ Content of the project folder:
 
 ```
  Top level of project folder: 
-├── .gitignore               # Git ignore file
-├── index.html               # landing HTML file, this is what users see when you come to url
+├── timesharebookings               
+├── webscraper
 └── README.md
 
-It has the following subfolders and files:
-├── .git                     # Folder for git repo
-├── images                   # Folder for images
-    /blah.jpg                # 
-├── scripts                  # Folder for scripts
-    /blah.js                 # 
-├── styles                   # Folder for styles
-    /blah.css                # 
+subfolders and files of timesharebookings:
+├── booking_bot
+    / booking_functions_bot.py
+    / discord_bot.py
+    / input_checks.py
+├── unit_test                   
+    / .__init__.py
+    / test_get_user_password
+    / test_get_user_name
+├── booking.py                                   
+├── booking_functions.py
+├── notification.py
+├── test_get_arrival_dates.py		# currently work in progress, working with freezegun method to create datetime object for unit testing
+├── user_inputs.py      
 
-Firebase hosting files: 
-├── .firebaserc...
-
+subfolders and files of webscarper:
+├── page_turner.py                                  
+├── webscraper.py			# this version uses Selenium and BS4 not very optimized
+├── webscraper2.py			# this version uses only BS4 faster and more optimized
+    
 
 ```
 
