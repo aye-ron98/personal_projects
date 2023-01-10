@@ -106,7 +106,7 @@ def get_number_of_occupants() -> str | None:
 
     occupants = input('How many people will be staying?: ')
 
-    if check_number_format(occupants) is not None:
+    if check_number_format(occupants) is not None and occupants != '0':
         return occupants
 
 
