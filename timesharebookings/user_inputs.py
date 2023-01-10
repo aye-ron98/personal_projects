@@ -93,7 +93,7 @@ def get_number_of_nights() -> str | None:
 
     nights = input('Enter number of nights you are staying: ')
 
-    if check_number_format(nights) is not None:
+    if check_number_format(nights) is not None and nights != '0':
         return nights
 
 
