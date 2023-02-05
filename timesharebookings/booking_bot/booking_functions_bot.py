@@ -131,9 +131,9 @@ def print_avaliability(se_driver):
     """
     avalability = se_driver.find_elements(By.CLASS_NAME, 'td-Checkin-Checkout')
     avaliable_rooms = []
-    for checkin, checkout in zip(*[iter(avalability)] * 2):
-        avaliable_rooms.append(('checking: {0}, checkout: {1}'.format(checkin.text, checkout.text)))
 
+    for date in range(0, len(avalability), 2):
+        avaliable_rooms.append((avalability[date].text, avalability[date + 1].text))
     return avaliable_rooms
 
 
