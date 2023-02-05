@@ -1,8 +1,9 @@
+import asyncio
 import os
-import time
 from datetime import datetime
 
 import discord
+from discord import Embed
 from discord.ext import commands
 from dotenv import load_dotenv
 from selenium import webdriver
@@ -92,11 +93,18 @@ async def on_message(message):
                 flag = True
                 await channel.send('I found some bookings, check them out!')
                 bookings = booking_functions_bot.print_avaliability(driver)
-                await channel.send(bookings)
+
+                response = f"Here are bookings from {start.content} to {end.content}:\n\n"
+                for item in bookings:
+                    response += f"{item[0]}    |     {item[1]}\n"
+
+                embed = Embed(title="Available bookings", description=response)
+
+                await channel.send(embed=embed)
                 driver.close()
                 break
             else:
-                time.sleep(300)
+                await asyncio.sleep(300)
                 driver.refresh()
                 flag = False
                 continue
