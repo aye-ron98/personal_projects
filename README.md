@@ -13,6 +13,11 @@ Technologies used for this project:
 * Beautiful Soup 4
 
 ## 3. Complete setup/installion/usage
+This program requires Selenium and Beautiful Soup to run. Some unit test require freezegun. Intallation can be done using:
+* pip install Selenium
+* pip install BS4
+* pip install freezegun
+
 Here are the steps ...
 * clone this repo
 * open in VS code
@@ -35,24 +40,32 @@ Content of the project folder:
 
 subfolders and files of timesharebookings:
 ├── booking_bot
-    / booking_functions_bot.py
-    / discord_bot.py
+    / booking_functions_bot.py       
+    / discord_bot.py                   # main program to execute for discord bot
     / input_checks.py
-├── unit_test                   
-    / .__init__.py
-    / test_get_user_password
-    / test_get_user_name
-├── booking.py                                   
+├── unit_test                    
+├── booking.py                         # main program to execute for python only program                               
 ├── booking_functions.py
-├── notification.py
-├── test_get_arrival_dates.py		# currently work in progress, working with freezegun method to create datetime object for unit testing
+├── notification.py	
 ├── user_inputs.py      
 
 subfolders and files of webscarper:
 ├── page_turner.py                                  
 ├── webscraper.py			# this version uses Selenium and BS4 not very optimized
 ├── webscraper2.py			# this version uses only BS4 faster and more optimized
-    
+
+subfolders and files of unit_test:
+├── user_inputs_unit_tests 
+    / .__init__.py
+    / test_get_user_password.py
+    / test_get_user_name.py
+    / test_get_arrival_dates.py         # requires freezegun module
+    / test_get_departure_date.py        # requires freezegun module
+    / test_get_number_of_occupants.py
+    / test_get_number_of_nights.py
+├── booking_functions_test
+    / .__init__.py
+    / test_booking_functions.py
 
 ```
 
